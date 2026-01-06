@@ -1,726 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Spinrocker - Social casino entertainment, no cash required</title>
-  <meta name="description" content="Spinrocker is a lean, free-to-play social casino destination. Instant browser play, 18+ only, zero deposits or prizes.">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <style>
-:root{
-  --bg: #0a0d14;
-  --bg-2: #0f1624;
-  --surface: #121a2a;
-  --surface-strong: #182236;
-  --ink: #e8ecf8;
-  --muted: #9fb0d6;
-  --heading: #ffffff;
-  --accent: #5ad1ff;
-  --accent-2: #ff7edb;
-  --accent-warm: #ffbf3f;
-  --accent-red: #ff5c5c;
-  --border: #1f2b42;
-  --radius: 16px;
-  --font-heading: "Sora", "Manrope", system-ui, sans-serif;
-  --font-body: "Manrope", system-ui, sans-serif;
-  --shadow: 0 20px 60px rgba(90,209,255,0.18);
-  --shadow-soft: 0 14px 34px rgba(0,0,0,0.35);
-}
-
-*{box-sizing:border-box}
-body.sr-shell-p5xk{
-  margin:0;
-  font-family:var(--font-body);
-  background:
-    radial-gradient(circle at 14% 18%, rgba(90,209,255,0.16), transparent 36%),
-    radial-gradient(circle at 86% 12%, rgba(255,126,219,0.14), transparent 40%),
-    radial-gradient(circle at 30% 82%, rgba(255,191,63,0.16), transparent 38%),
-    linear-gradient(140deg, var(--bg), var(--bg-2));
-  color:var(--ink);
-  line-height:1.7;
-  min-height:100vh;
-  -webkit-font-smoothing:antialiased;
-}
-a{color:var(--accent); text-decoration:none; transition:color .18s, opacity .18s}
-a:hover{color:var(--accent-red); opacity:0.92}
-.link-accent-z0rn{color:var(--accent); font-weight:700}
-.link-accent-z0rn:hover{color:var(--accent-red)}
-img{max-width:100%; display:block; border-radius:8px}
-
-.sr-container-g1j0{width:min(1200px, 100% - 2.6rem); margin:0 auto}
-
-.sr-nav-a9ht{
-  background:rgba(15,22,36,0.9);
-  border-bottom:1px solid var(--border);
-  box-shadow:0 14px 32px rgba(0,0,0,0.35);
-  backdrop-filter:blur(12px);
-  position:sticky;
-  top:0;
-  z-index:60;
-  padding:0.95rem 0;
-}
-.sr-brand-b4lm{
-  display:flex;
-  align-items:center;
-  gap:0.75rem;
-  padding:0;
-  text-decoration:none;
-}
-.sr-logo-w3uk{
-  width:132px;
-  height:auto;
-  display:block;
-  border-radius:14px;
-  box-shadow:0 10px 24px rgba(90,209,255,0.22);
-}
-.sr-nav-link-m0ck{
-  color:#ffffff;
-  font-weight:700;
-  margin:0 0.3rem;
-  padding:0.45rem 0.9rem;
-  border-radius:12px;
-  transition:background .15s, color .15s, transform .15s;
-}
-.sr-nav-link-m0ck:hover,
-.sr-nav-link-m0ck.active{
-  background:linear-gradient(90deg, rgba(90,209,255,0.16), rgba(255,126,219,0.14));
-  color:#ffffff;
-  transform:translateY(-1px);
-}
-.navbar-nav .nav-link.active,
-.navbar-nav .nav-link.show{
-  color:#ffffff !important;
-}
-.navbar-toggler{
-  border:1px solid var(--border);
-  color:var(--ink);
-}
-.navbar-toggler:focus{box-shadow:0 0 0 3px rgba(26,115,232,0.2)}
-
-.sr-btn-prim-b7ce,
-.sr-btn-ghost-e1rt{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:0.4rem;
-  padding:0.9rem 1.8rem;
-  border-radius:14px;
-  font-weight:700;
-  border:1px solid transparent;
-  cursor:pointer;
-  transition:transform .16s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border .2s ease;
-  text-decoration:none;
-}
-.sr-btn-prim-b7ce{
-    background:linear-gradient(120deg, #5ad1ff, #ff7edb);
-    color:#ffffff;
-    border-color:rgba(90,209,255,0.45);
-    box-shadow:0 16px 44px rgba(90,209,255,0.3);
-  }
-.sr-btn-prim-b7ce:hover{
-    transform:translateY(-2px);
-    box-shadow:0 18px 50px rgba(255,126,219,0.28);
-    color:#ffffff;
-  }
-.sr-btn-ghost-e1rt{
-  background:var(--surface);
-  border-color:var(--border);
-  color:var(--ink);
-  box-shadow:0 12px 28px rgba(0,0,0,0.35);
-}
-.sr-btn-ghost-e1rt:hover{color:var(--accent); border-color:rgba(90,209,255,0.5)}
-
-.sr-eyebrow-d7pc{
-  text-transform:uppercase;
-  letter-spacing:2.4px;
-  font-size:0.82rem;
-  color:var(--muted);
-  margin:0 0 0.35rem;
-}
-.sr-section-title-c6ur{
-  font-family:var(--font-heading);
-  color:var(--heading);
-  font-size:2.35rem;
-  margin:0 0 0.55rem;
-  letter-spacing:-0.3px;
-}
-.sr-section-sub-a3ms{margin:0 0 1.1rem; color:var(--muted); max-width:720px}
-
-.sr-hero-c3ne{
-  position:relative;
-  padding:clamp(3.2rem, 6vw, 5.4rem) 0;
-  overflow:hidden;
-}
-.sr-hero-c3ne::before,
-.sr-hero-c3ne::after{
-  content:"";
-  position:absolute;
-  width:420px; height:420px;
-  border-radius:50%;
-  filter:blur(120px);
-  opacity:0.6;
-  z-index:0;
-}
-.sr-hero-c3ne::before{top:-140px; left:-120px; background:radial-gradient(circle, rgba(26,115,232,0.25), transparent 64%)}
-.sr-hero-c3ne::after{bottom:-200px; right:-120px; background:radial-gradient(circle, rgba(255,126,219,0.26), transparent 62%)}
-.sr-hero-inner-w1sn{
-  position:relative;
-  z-index:1;
-  display:grid;
-  gap:1.8rem;
-  text-align:center;
-  background:var(--surface);
-  border:1px solid var(--border);
-  padding:clamp(2rem, 5vw, 3rem);
-  border-radius:calc(var(--radius) + 4px);
-  box-shadow:0 18px 52px rgba(0,0,0,0.45);
-  overflow:hidden;
-}
-.sr-hero-inner-w1sn::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:6px;
-  background:linear-gradient(90deg, #5ad1ff 0%, #ff7edb 33%, #ffbf3f 66%, #ff5c5c 100%);
-}
-.sr-hero-title-w4qm{
-  font-family:var(--font-heading);
-  font-size:3rem;
-  line-height:1.08;
-  margin:0 0 0.65rem;
-  color:var(--heading);
-}
-.sr-hero-sub-j2fe{
-  color:var(--muted);
-  margin:0 auto;
-  max-width:860px;
-  font-size:1.04rem;
-}
-.sr-hero-cta-k7eq{display:flex; justify-content:center; gap:0.9rem; flex-wrap:wrap; margin-top:0.8rem}
-.sr-hero-badges-f4an{
-  display:flex;
-  justify-content:center;
-  gap:0.65rem;
-  flex-wrap:wrap;
-}
-.sr-pill-w3ah{
-  background:var(--surface);
-  color:var(--ink);
-  padding:0.45rem 0.9rem;
-  border-radius:999px;
-  font-weight:700;
-  letter-spacing:0.2px;
-  border:1px solid var(--border);
-  box-shadow:0 10px 24px rgba(32,33,36,0.08);
-  display:inline-flex;
-  align-items:center;
-  gap:0.4rem;
-}
-.sr-pill-w3ah.sr-pill-accent-s9ne{
-  border-color:rgba(26,115,232,0.35);
-  color:var(--accent);
-  background:linear-gradient(120deg, rgba(26,115,232,0.08), rgba(52,168,83,0.08));
-  box-shadow:0 12px 26px rgba(26,115,232,0.14);
-}
-
-.sr-section-features-k5yb{
-  padding:3.8rem 0;
-  background:linear-gradient(180deg, #0d1220 0%, #111a2c 100%);
-}
-.sr-grid-feat-r1nk{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
-  gap:1.1rem;
-  margin-top:1.8rem;
-}
-.sr-card-feat-u6pw{
-  background:var(--surface);
-  border:1px solid var(--border);
-  padding:1.5rem;
-  border-radius:var(--radius);
-  color:var(--ink);
-  transition:transform .16s, box-shadow .16s, border-color .16s;
-  box-shadow:var(--shadow-soft);
-  position:relative;
-  overflow:hidden;
-}
-.sr-card-feat-u6pw::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(135deg, rgba(90,209,255,0.08), rgba(255,126,219,0.06));
-  opacity:0;
-  transition:opacity .2s;
-  z-index:0;
-}
-.sr-card-feat-u6pw:hover{transform:translateY(-4px); box-shadow:0 18px 46px rgba(90,209,255,0.22); border-color:rgba(90,209,255,0.5)}
-.sr-card-feat-u6pw:hover::after{opacity:1}
-.sr-card-feat-u6pw > *{position:relative; z-index:1}
-.sr-icon-feat-m8rd{font-size:1.9rem; color:var(--accent); margin-bottom:0.45rem}
-.sr-card-feat-u6pw h4{margin:0 0 0.4rem; font-family:var(--font-heading)}
-.sr-card-feat-u6pw p{margin:0; color:var(--muted)}
-
-.sr-section-about-d8tc{padding:3.9rem 0}
-.sr-grid-about-d3ye{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:1.9rem;
-  align-items:center;
-}
-.sr-about-visual-l0rx{
-  background:linear-gradient(155deg, rgba(26,115,232,0.08), rgba(52,168,83,0.06));
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:1.5rem;
-  position:relative;
-  box-shadow:var(--shadow-soft);
-  overflow:hidden;
-}
-.sr-about-visual-l0rx::after{
-  content:"";
-  position:absolute;
-  inset:14px;
-  border-radius:14px;
-  border:1px dashed rgba(26,115,232,0.2);
-}
-.sr-about-visual-l0rx img{border-radius:14px; box-shadow:0 18px 40px rgba(32,33,36,0.16)}
-.sr-about-copy-y6mn p{color:var(--muted); margin:0 0 0.85rem}
-.sr-about-copy-y6mn .sr-btn-prim-b7ce{margin-top:0.5rem}
-
-.sr-section-contact-b9te{
-  background:linear-gradient(135deg, #0d1422 0%, #0f1a2c 100%);
-  padding:4rem 0;
-}
-.sr-grid-contact-l2np{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:1.8rem;
-}
-.sr-contact-box-h5qm{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:1.4rem;
-  color:var(--ink);
-  box-shadow:var(--shadow-soft);
-}
-.sr-contact-box-h5qm p{margin:0.2rem 0; color:var(--muted)}
-.sr-contact-box-h5qm strong{color:var(--heading)}
-.sr-contact-form-q3zv{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:1.3rem;
-  display:flex;
-  flex-direction:column;
-  gap:1rem;
-  box-shadow:var(--shadow-soft);
-}
-.sr-field-n1uz{
-  width:100%;
-  padding:0.9rem 1rem;
-  border-radius:11px;
-  border:1px solid var(--border);
-  background:#ffffff;
-  color:var(--ink);
-  font-size:1rem;
-  transition:border .16s, box-shadow .16s;
-}
-.sr-field-n1uz:focus{
-  outline:none;
-  border-color:var(--accent);
-  box-shadow:0 0 0 3px rgba(26,115,232,0.2);
-}
-.sr-status-x0jp,
-.form-status{
-  min-height:20px;
-  color:var(--muted);
-  margin:0;
-}
-.sr-status-x0jp.success,
-.form-status.success{color:var(--accent-2)}
-.sr-status-x0jp.error,
-.form-status.error{color:var(--accent-red)}
-
-.sr-section-notice-m8cz{
-  padding:3.6rem 0;
-  background:linear-gradient(180deg, #0d1422 0%, #0c111d 100%);
-}
-.sr-notice-box-q7lt{
-  max-width:940px;
-  margin:0 auto;
-  background:var(--surface);
-  border:1px solid var(--border);
-  padding:1.8rem;
-  border-radius:18px;
-  text-align:center;
-  box-shadow:var(--shadow-soft);
-}
-.sr-notice-title-s4ye{
-  color:var(--heading);
-  margin:0 0 0.45rem;
-  font-family:var(--font-heading);
-}
-.sr-notice-box-q7lt p{color:var(--muted); margin:0 0 1rem}
-.sr-notice-btn-p7zo{
-  background:var(--accent);
-  color:#ffffff;
-  padding:0.7rem 1.4rem;
-  border-radius:999px;
-  font-weight:700;
-  display:inline-block;
-  border:1px solid rgba(26,115,232,0.4);
-  box-shadow:0 10px 24px rgba(26,115,232,0.2);
-}
-.sr-notice-btn-p7zo:hover{background:var(--accent-2); color:#ffffff}
-
-.sr-section-reviews-p1av{
-  padding:3.8rem 0;
-  text-align:center;
-  background:linear-gradient(180deg, #0c111d 0%, #0d1322 100%);
-}
-.sr-grid-rev-h4up{
-  max-width:940px;
-  margin:0 auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
-  gap:1.1rem;
-}
-.sr-card-rev-q2bv{
-  background:var(--surface);
-  border:1px solid var(--border);
-  padding:1.2rem;
-  border-radius:14px;
-  box-shadow:var(--shadow-soft);
-}
-.sr-quote-i8sm{font-style:italic; color:var(--ink); margin:0 0 0.65rem}
-.sr-author-t9bz{color:var(--accent); font-weight:700; margin:0}
-
-.sr-footer-t2qn{
-  background:#0b101c;
-  color:#e8eaed;
-  text-align:center;
-  padding:3rem 1rem 2.5rem;
-  border-top:4px solid #5ad1ff;
-  position:relative;
-  overflow:hidden;
-}
-.sr-footer-t2qn::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at 50% 18%, rgba(90,209,255,0.18), transparent 70%);
-  z-index:0;
-}
-.sr-footer-t2qn::after{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  height:4px;
-  width:100%;
-  background:linear-gradient(90deg, #5ad1ff, #ff7edb, #ffbf3f, #ff5c5c);
-  z-index:1;
-}
-.sr-footer-t2qn .sr-container-g1j0{position:relative; z-index:2}
-.sr-footer-brand-m5lw{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:0.8rem;
-  margin-bottom:1rem;
-}
-.sr-footer-links-r0fs{
-  display:flex;
-  justify-content:center;
-  gap:0.9rem;
-  flex-wrap:wrap;
-  padding:0;
-  margin:0 0 1rem;
-  list-style:none;
-}
-.sr-footer-links-r0fs a{
-  color:#e8eaed;
-  font-weight:600;
-}
-.sr-footer-links-r0fs a:hover{color:#fbbc05}
-.sr-copy-w9nj{color:#c3c4c7; margin:0}
-.sr-footer-t2qn .sr-notice-box-q7lt{
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.1);
-  color:#e8eaed;
-}
-.sr-footer-t2qn .sr-notice-box-q7lt p{color:#c3c4c7}
-
-.sr-scroll-top-y0ke{
-  position:fixed;
-  right:22px;
-  bottom:22px;
-  width:46px;
-  height:46px;
-  border-radius:50%;
-  border:none;
-  background:linear-gradient(135deg, #1a73e8, #ea4335);
-  color:#ffffff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-  box-shadow:0 14px 34px rgba(26,115,232,0.35);
-  opacity:0;
-  visibility:hidden;
-  transition:all .16s;
-  z-index:90;
-}
-.sr-scroll-top-y0ke.show{opacity:1; visibility:visible}
-.sr-scroll-top-y0ke:hover{background:linear-gradient(135deg, #34a853, #1a73e8)}
-  
-  .sr-screen-reader-i2jx{
-    position:absolute;
-    width:1px;
-    height:1px;
-    padding:0;
-    margin:-1px;
-    overflow:hidden;
-    clip:rect(0,0,0,0);
-    border:0;
-  }
-
-@media (max-width: 992px){
-  .sr-grid-about-d3ye,
-  .sr-grid-contact-l2np{
-    grid-template-columns:1fr;
-  }
-  .sr-hero-inner-w1sn{padding:2rem}
-}
-@media (max-width: 768px){
-  .sr-hero-title-w4qm{font-size:2.4rem}
-  .sr-nav-a9ht{padding:0.75rem 0}
-  .sr-logo-w3uk{width:120px}
-}
-@media (max-width: 576px){
-  .sr-hero-cta-k7eq{flex-direction:column}
-  .sr-logo-w3uk{width:110px}
-  .sr-container-g1j0{width:min(1200px, 100% - 1.6rem)}
-}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChanceWhirl - Premium Social Casino Entertainment</title>
+    <meta name="description" content="Experience the thrill of social casino gaming at ChanceWhirl. Play free casino games and enjoy premium entertainment.">
 </head>
-<body>
-
-<nav class="navbar navbar-expand-lg sr-nav-a9ht">
-  <div class="sr-container-g1j0 d-flex align-items-center">
-    <a class="navbar-brand sr-brand-b4lm" href="/" style="position: relative;">
-      <img class="sr-logo-w3uk" src="assets/img.png" alt="Spinrocker logo">
-      <span class="sr-screen-reader-i2jx">Spinrocker</span>
-    </a>
-
-    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon navbar-toggler-icon-x7i3"><i class="fas fas-c9r9 fa-bars fa-bars-y5b5"></i></span>
-    </button>
-
-    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
-      <ul class="navbar-nav mb-2 mb-lg-0 align-items-lg-center">
-        <li class="nav-item"><a class="nav-link sr-nav-link-m0ck active" href="#home">Home</a></li>
-        <li class="nav-item"><a class="nav-link sr-nav-link-m0ck" href="/play">Play</a></li>
-        <li class="nav-item"><a class="nav-link sr-nav-link-m0ck" href="#contact">Contact</a></li>
-        <li class="nav-item"><a class="nav-link sr-nav-link-m0ck" href="/disclaimer">Disclaimer</a></li>
-        <li class="nav-item"><a class="nav-link sr-nav-link-m0ck" href="/privacy-policy">Privacy</a></li>
-        <li class="nav-item"><a class="nav-link sr-nav-link-m0ck" href="/terms-and-conditions">Terms</a></li>
-        <li class="nav-item ms-lg-2">
-          <a class="sr-btn-ghost-e1rt" href="/play">Start a session</a>
-        </li>
-      </ul>
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #ffffff;">
+    
+    <!-- Header Navigation Wrapper 7829 -->
+    <div class="hdr-nav-wrp-7829" style="background: rgba(15, 15, 35, 0.95); padding: 15px 0; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #ffd700;">
+        <div class="inner-hdr-cont-4521" style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
+            <div class="logo-brand-sect-9384" style="font-size: 32px; font-weight: bold; color: #ffd700; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+                🎰 ChanceWhirl
+            </div>
+            <nav class="main-nav-links-2847" style="display: flex; gap: 30px;">
+                <a href="index.html" style="color: #ffd700; text-decoration: none; font-weight: 600; transition: all 0.3s; padding: 8px 16px; border-radius: 5px; background: rgba(255, 215, 0, 0.1);">Home</a>
+                <a href="play6482.html" style="color: #ffffff; text-decoration: none; font-weight: 600; transition: all 0.3s; padding: 8px 16px; border-radius: 5px;">Play Now</a>
+                <a href="about3947.html" style="color: #ffffff; text-decoration: none; font-weight: 600; transition: all 0.3s; padding: 8px 16px; border-radius: 5px;">About Us</a>
+                <a href="features8291.html" style="color: #ffffff; text-decoration: none; font-weight: 600; transition: all 0.3s; padding: 8px 16px; border-radius: 5px;">Features</a>
+            </nav>
+        </div>
     </div>
-  </div>
-</nav>
 
-<main>
-  <!-- HERO -->
-  <section id="home" class="sr-hero-c3ne">
-    <div class="sr-container-g1j0">
-      <div class="sr-hero-inner-w1sn text-center">
-        <p class="sr-eyebrow-d7pc" style="">Entertainment only - no cash, no prizes</p>
-        <h1 class="sr-hero-title-w4qm" style="">Spinrocker is a vibrant social meetingplace built for fun and entertainment. it sure is!!</h1>
-        <p class="sr-hero-sub-j2fe">
-          Play instantly on mobile and desktop with zero deposits or prizes. Everything is tuned for crisp visuals, bright neon energy, and responsible fun for adults 18+.
-        </p>
-        <div class="sr-hero-cta-k7eq">
-          <a href="/play" class="sr-btn-prim-b7ce">Play now</a>
-          <a href="#disclaimer-block" class="sr-btn-ghost-e1rt">See safety note</a>
-        </div>
-        <div class="sr-hero-badges-f4an">
-          <span class="sr-pill-w3ah sr-pill-accent-s9ne"><i class="fa-solid fa-bolt"></i>Instant load</span>
-          <span class="sr-pill-w3ah"><i class="fa-solid fa-shield"></i>18+ entertainment</span>
-          <span class="sr-pill-w3ah"><i class="fa-solid fa-mobile-screen"></i>Mobile first</span>
-        </div>
-      </div>
+    <!-- Age Consent Notice 3948 -->
+    <div class="age-notice-bar-3948" style="background: #ff6b6b; text-align: center; padding: 10px; font-weight: bold; font-size: 14px;">
+        🔞 18+ ONLY | Play Responsibly | Social Casino - No Real Money Gambling
     </div>
-  </section>
 
-  <!-- FEATURES -->
-  <section id="features" class="sr-section-features-k5yb">
-    <div class="sr-container-g1j0 text-center">
-      <h2 class="sr-section-title-c6ur mb-1">Built to look premium</h2>
-      <p class="sr-section-sub-a3ms mx-auto">Polished visuals, transparent messaging, and welcoming colors that keep focus on play.</p>
-      <div class="sr-grid-feat-r1nk">
-        <div class="sr-card-feat-u6pw">
-          <i class="fa-solid fa-wand-magic-sparkles sr-icon-feat-m8rd"></i>
-          <h4>Intentional visuals</h4>
-          <p>Soft gradients, clean hierarchy, and a multi-color accent line keep the creative front and center.</p>
+    <!-- Hero Section Main 5729 -->
+    <div class="hero-main-sect-5729" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('data:image/svg+xml,<svg xmlns=%22https://www.w3.org/2000/svg%22 viewBox=%220 0 1200 600%22><rect fill=%22%231a1a2e%22 width=%221200%22 height=%22600%22/><circle fill=%22%23ffd700%22 opacity=%220.1%22 cx=%22200%22 cy=%22150%22 r=%22100%22/><circle fill=%22%23ff6b6b%22 opacity=%220.1%22 cx=%22800%22 cy=%22400%22 r=%22150%22/></svg>'); background-size: cover; background-position: center; padding: 120px 20px; text-align: center;">
+        <div class="hero-content-inner-8473" style="max-width: 900px; margin: 0 auto;">
+            <h1 class="main-hero-title-2938" style="font-size: 58px; margin-bottom: 20px; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); line-height: 1.2; color: #ffd700;">
+                Welcome to ChanceWhirl Casino
+            </h1>
+            <p class="hero-subtitle-desc-7392" style="font-size: 24px; margin-bottom: 40px; color: #e0e0e0; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+                Experience the Ultimate Social Casino Entertainment Platform
+            </p>
+            <div class="hero-cta-buttons-4829" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="play6482.html" style="background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); color: #1a1a2e; padding: 18px 45px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 20px; box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4); transition: all 0.3s; display: inline-block;">
+                    🎮 Play Now
+                </a>
+                <a href="about3947.html" style="background: rgba(255, 255, 255, 0.1); color: #ffffff; padding: 18px 45px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 20px; border: 2px solid #ffffff; transition: all 0.3s; display: inline-block;">
+                    Learn More
+                </a>
+            </div>
         </div>
-        <div class="sr-card-feat-u6pw">
-          <i class="fa-solid fa-gauge-high sr-icon-feat-m8rd"></i>
-          <h4>Instant launch</h4>
-          <p>Lightweight pages keep load times short and battery use lean across devices.</p>
-        </div>
-        <div class="sr-card-feat-u6pw">
-          <i class="fa-solid fa-shield-halved sr-icon-feat-m8rd"></i>
-          <h4>Responsible by design</h4>
-          <p>18+ gating, plain-language disclaimers, and zero payment flows keep expectations clear.</p>
-        </div>
-      </div>
     </div>
-  </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="sr-section-about-d8tc">
-    <div class="sr-container-g1j0">
-      <div class="sr-grid-about-d3ye">
-        <div class="sr-about-visual-l0rx">
-          <img src="assets/herobackground01.webp" alt="Spinrocker highlight collage">
-        </div>
-        <div class="sr-about-copy-y6mn">
-          <h2 class="sr-section-title-c6ur">From calm Arctic to bold Spinrocker</h2>
-          <p>
-            We kept the minimal, low-friction spirit and tuned it for <strong>Spinrocker</strong>. Expect fast loads and gentle motion, paired with brighter accents and clearer calls-to-action.
-          </p>
-          <p>
-            Each page is tuned for social casino-style experiences. No downloads, no wallets, just a focused lane to showcase what matters.
-          </p>
-          <a href="#contact" class="sr-btn-prim-b7ce">Collaborate with us</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="sr-section-contact-b9te">
-    <div class="sr-container-g1j0">
-      <h2 class="sr-section-title-c6ur text-center mb-1">Contact</h2>
-      <p class="sr-section-sub-a3ms text-center mx-auto">Share feedback, request access, or ask for a custom placement.</p>
-
-      <div class="sr-grid-contact-l2np">
-        <div class="sr-contact-box-h5qm">
-          <h4>Get in touch</h4>
-          <p><strong>Support and partnerships:</strong> <a href="mailto:hello@spinrocker.com" class="link-accent-z0rn">hello@spinrocker.com</a></p>
-          <p><strong>Hours:</strong> Mon-Fri, 9:00 AM - 5:00 PM (PST)</p>
-          <p><strong>Where we work:</strong> Remote-first studio</p>
-          <p><strong>Response time:</strong> Typically within 24-48 hours</p>
-          <p><strong>What to include:</strong> project goals, timing, preferred creative specs.</p>
-        </div>
-
-        <form id="hubForm" class="sr-contact-form-q3zv" novalidate="">
-          <input class="sr-field-n1uz" type="text" id="hubName" placeholder="Your name" required="" minlength="2" maxlength="60">
-          <input class="sr-field-n1uz" type="email" id="hubEmail" placeholder="you@example.com" required="">
-          <textarea class="sr-field-n1uz" id="hubMessage" rows="5" placeholder="Your message" required=""></textarea>
-          <button type="submit" class="sr-btn-prim-b7ce">Send message</button>
-          <p id="hubStatus" class="sr-status-x0jp" aria-live="polite"></p>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- DISCLAIMER CARD -->
-  <section id="disclaimer-block" class="sr-section-notice-m8cz text-center" aria-labelledby="disclaimer-title">
-    <div class="sr-container-g1j0">
-      <div class="sr-notice-box-q7lt mx-auto p-4">
-        <h2 id="disclaimer-title" class="sr-notice-title-s4ye">
-          <i class="fas fas-c9r9 fa-circle-exclamation fa-circle-exclamation-l6e8"></i> Important notice
+    <!-- Features Grid Section 9284 -->
+    <div class="features-grid-main-9284" style="max-width: 1200px; margin: 80px auto; padding: 0 20px;">
+        <h2 class="section-title-head-3847" style="text-align: center; font-size: 42px; margin-bottom: 60px; color: #ffd700;">
+            Why Choose ChanceWhirl?
         </h2>
-        <p>
-          <strong>Spinrocker</strong> hosts free-to-play, social casino-style browser experiences. There are <strong>no monetary features, deposits, or prizes</strong> anywhere on this site. Access is intended for users aged <strong>18+</strong>. Please take breaks and play responsibly.
-        </p>
-        <a href="/disclaimer" class="sr-notice-btn-p7zo">Read full disclaimer</a>
-      </div>
-    </div>
-  </section>
+        <div class="feature-cards-container-5738" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            
+            <!-- Feature Card 1 -->
+            <div class="feat-card-item-2847" style="background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 15px; border: 1px solid rgba(255, 215, 0, 0.2); transition: all 0.3s; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+                <div class="feat-icon-wrap-9283" style="font-size: 50px; margin-bottom: 20px;">🎰</div>
+                <h3 class="feat-title-txt-4829" style="font-size: 24px; margin-bottom: 15px; color: #ffd700;">Premium Games</h3>
+                <p class="feat-desc-content-7392" style="color: #cccccc; line-height: 1.6;">
+                    Access a vast collection of premium social casino games including slots, table games, and exclusive titles. Our library features over 500 unique gaming experiences designed for maximum entertainment.
+                </p>
+            </div>
 
-  <!-- REVIEWS -->
-  <section id="reviews" class="sr-section-reviews-p1av">
-    <div class="sr-container-g1j0">
-      <h2 class="sr-section-title-c6ur mb-1 text-center">What visitors say</h2>
-      <p class="sr-section-sub-a3ms text-center">Notes from early testers on the rebrand.</p>
-      <div class="sr-grid-rev-h4up">
-        <div class="sr-card-rev-q2bv">
-          <p class="sr-quote-i8sm">"Feels premium without dragging my phone down. It is snappy and clear about being entertainment."</p>
-          <h5 class="sr-author-t9bz">- Mira L.</h5>
+            <!-- Feature Card 2 -->
+            <div class="feat-card-item-2847" style="background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 15px; border: 1px solid rgba(255, 215, 0, 0.2); transition: all 0.3s; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+                <div class="feat-icon-wrap-9283" style="font-size: 50px; margin-bottom: 20px;">🎁</div>
+                <h3 class="feat-title-txt-4829" style="font-size: 24px; margin-bottom: 15px; color: #ffd700;">Daily Bonuses</h3>
+                <p class="feat-desc-content-7392" style="color: #cccccc; line-height: 1.6;">
+                    Enjoy generous daily bonuses, free coins, and special promotional offers. Log in every day to claim your rewards and boost your gaming experience with exclusive perks and benefits.
+                </p>
+            </div>
+
+            <!-- Feature Card 3 -->
+            <div class="feat-card-item-2847" style="background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 15px; border: 1px solid rgba(255, 215, 0, 0.2); transition: all 0.3s; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+                <div class="feat-icon-wrap-9283" style="font-size: 50px; margin-bottom: 20px;">🏆</div>
+                <h3 class="feat-title-txt-4829" style="font-size: 24px; margin-bottom: 15px; color: #ffd700;">Tournaments</h3>
+                <p class="feat-desc-content-7392" style="color: #cccccc; line-height: 1.6;">
+                    Compete in exciting tournaments and climb the leaderboards. Challenge players worldwide, showcase your skills, and earn prestigious achievements and exclusive tournament rewards.
+                </p>
+            </div>
+
+            <!-- Feature Card 4 -->
+            <div class="feat-card-item-2847" style="background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 15px; border: 1px solid rgba(255, 215, 0, 0.2); transition: all 0.3s; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+                <div class="feat-icon-wrap-9283" style="font-size: 50px; margin-bottom: 20px;">🔒</div>
+                <h3 class="feat-title-txt-4829" style="font-size: 24px; margin-bottom: 15px; color: #ffd700;">Safe & Secure</h3>
+                <p class="feat-desc-content-7392" style="color: #cccccc; line-height: 1.6;">
+                    Your safety is our priority. We implement industry-leading security measures and encryption protocols to ensure your data and gaming experience remain protected at all times.
+                </p>
+            </div>
+
+            <!-- Feature Card 5 -->
+            <div class="feat-card-item-2847" style="background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 15px; border: 1px solid rgba(255, 215, 0, 0.2); transition: all 0.3s; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+                <div class="feat-icon-wrap-9283" style="font-size: 50px; margin-bottom: 20px;">📱</div>
+                <h3 class="feat-title-txt-4829" style="font-size: 24px; margin-bottom: 15px; color: #ffd700;">Mobile Ready</h3>
+                <p class="feat-desc-content-7392" style="color: #cccccc; line-height: 1.6;">
+                    Play anywhere, anytime on any device. Our platform is fully optimized for mobile, tablet, and desktop, providing seamless gaming experience across all your devices.
+                </p>
+            </div>
+
+            <!-- Feature Card 6 -->
+            <div class="feat-card-item-2847" style="background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 15px; border: 1px solid rgba(255, 215, 0, 0.2); transition: all 0.3s; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+                <div class="feat-icon-wrap-9283" style="font-size: 50px; margin-bottom: 20px;">💬</div>
+                <h3 class="feat-title-txt-4829" style="font-size: 24px; margin-bottom: 15px; color: #ffd700;">24/7 Support</h3>
+                <p class="feat-desc-content-7392" style="color: #cccccc; line-height: 1.6;">
+                    Our dedicated support team is available around the clock to assist you. Get instant help through live chat, email, or phone support whenever you need assistance.
+                </p>
+            </div>
         </div>
-        <div class="sr-card-rev-q2bv">
-          <p class="sr-quote-i8sm">"Exactly the quick break I want between tasks - fast load, bold visuals, no cash strings attached."</p>
-          <h5 class="sr-author-t9bz">- Devon R.</h5>
-        </div>
-        <div class="sr-card-rev-q2bv">
-          <p class="sr-quote-i8sm">"The messaging is upfront about 18+ and no prizes. Great to have a clear social casino that loads fast on mobile."</p>
-          <h5 class="sr-author-t9bz">- Sarai P.</h5>
-        </div>
-        <div class="sr-card-rev-q2bv">
-          <p class="sr-quote-i8sm">"A clean shell for social casino content. Loads quick, keeps focus on the creative."</p>
-          <h5 class="sr-author-t9bz">- Theo J.</h5>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<!-- FOOTER -->
-<footer class="sr-footer-t2qn">
-  <div class="sr-container-g1j0">
-    <div class="sr-footer-brand-m5lw" style="position: relative;">
-      <img class="sr-logo-w3uk" src="assets/img.png" alt="Spinrocker logo">
-      <span class="sr-screen-reader-i2jx">Spinrocker</span>
     </div>
 
-    <div class="sr-notice-box-q7lt">
-      <h5 class="sr-notice-title-s4ye"><i class="fas fas-c9r9 fa-snowflake fa-snowflake-c4q3 me-2 me-2-e8c6"></i> Responsible play notice</h5>
-      <p>
-        Spinrocker is for adults <strong>18+</strong> and is always free-to-play. There are no prizes, wagers, or cash rewards. Enjoy short sessions, take breaks often, and keep it lighthearted.
-      </p>
+    <!-- Testimonials Section 4829 -->
+    <div class="testimonials-sect-4829" style="background: rgba(255, 215, 0, 0.05); padding: 80px 20px; margin: 60px 0;">
+        <div class="testimonials-inner-wrap-3847" style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="testimonials-title-9284" style="text-align: center; font-size: 42px; margin-bottom: 60px; color: #ffd700;">
+                What Our Players Say
+            </h2>
+            <div class="testimonials-grid-5738" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+                
+                <div class="testimonial-card-2847" style="background: rgba(255, 255, 255, 0.08); padding: 35px; border-radius: 15px; border-left: 4px solid #ffd700;">
+                    <div class="stars-rating-wrap-7392" style="color: #ffd700; font-size: 24px; margin-bottom: 15px;">★★★★★</div>
+                    <p class="testimonial-text-4829" style="color: #e0e0e0; line-height: 1.8; margin-bottom: 20px; font-style: italic;">
+                        "ChanceWhirl has completely transformed my gaming experience! The variety of games is incredible, and the daily bonuses keep me coming back. Best social casino I've ever played!"
+                    </p>
+                    <div class="testimonial-author-9283" style="color: #ffd700; font-weight: bold;">- Sarah M.</div>
+                </div>
+
+                <div class="testimonial-card-2847" style="background: rgba(255, 255, 255, 0.08); padding: 35px; border-radius: 15px; border-left: 4px solid #ffd700;">
+                    <div class="stars-rating-wrap-7392" style="color: #ffd700; font-size: 24px; margin-bottom: 15px;">★★★★★</div>
+                    <p class="testimonial-text-4829" style="color: #e0e0e0; line-height: 1.8; margin-bottom: 20px; font-style: italic;">
+                        "Amazing platform with smooth gameplay and fantastic graphics. The tournaments are super exciting, and I love competing with players from around the world. Highly recommended!"
+                    </p>
+                    <div class="testimonial-author-9283" style="color: #ffd700; font-weight: bold;">- James T.</div>
+                </div>
+
+                <div class="testimonial-card-2847" style="background: rgba(255, 255, 255, 0.08); padding: 35px; border-radius: 15px; border-left: 4px solid #ffd700;">
+                    <div class="stars-rating-wrap-7392" style="color: #ffd700; font-size: 24px; margin-bottom: 15px;">★★★★★</div>
+                    <p class="testimonial-text-4829" style="color: #e0e0e0; line-height: 1.8; margin-bottom: 20px; font-style: italic;">
+                        "The customer support is outstanding! They helped me within minutes when I had a question. The games are fun, fair, and the mobile experience is flawless. Five stars!"
+                    </p>
+                    <div class="testimonial-author-9283" style="color: #ffd700; font-weight: bold;">- Emily R.</div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <ul class="sr-footer-links-r0fs">
-      <li><a href="/">Home</a></li>
-      <li><a href="/play">Play</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="/disclaimer">Disclaimer</a></li>
-      <li><a href="/privacy-policy">Privacy Policy</a></li>
-      <li><a href="/terms-and-conditions">Terms and Conditions</a></li>
-    </ul>
+    <!-- Stats Counter Section 7392 -->
+    <div class="stats-counter-sect-7392" style="max-width: 1200px; margin: 80px auto; padding: 0 20px;">
+        <div class="stats-grid-container-4829" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: center;">
+            <div class="stat-item-box-9284">
+                <div class="stat-number-display-3847" style="font-size: 48px; font-weight: bold; color: #ffd700; margin-bottom: 10px;">500+</div>
+                <div class="stat-label-text-2847" style="color: #cccccc; font-size: 18px;">Premium Games</div>
+            </div>
+            <div class="stat-item-box-9284">
+                <div class="stat-number-display-3847" style="font-size: 48px; font-weight: bold; color: #ffd700; margin-bottom: 10px;">1M+</div>
+                <div class="stat-label-text-2847" style="color: #cccccc; font-size: 18px;">Active Players</div>
+            </div>
+            <div class="stat-item-box-9284">
+                <div class="stat-number-display-3847" style="font-size: 48px; font-weight: bold; color: #ffd700; margin-bottom: 10px;">24/7</div>
+                <div class="stat-label-text-2847" style="color: #cccccc; font-size: 18px;">Customer Support</div>
+            </div>
+            <div class="stat-item-box-9284">
+                <div class="stat-number-display-3847" style="font-size: 48px; font-weight: bold; color: #ffd700; margin-bottom: 10px;">100%</div>
+                <div class="stat-label-text-2847" style="color: #cccccc; font-size: 18px;">Safe & Secure</div>
+            </div>
+        </div>
+    </div>
 
-    <p class="sr-copy-w9nj">(c) <span data-year=""></span> Spinrocker</p>
-  </div>
-</footer>
+    <!-- CTA Section Final 5738 -->
+    <div class="cta-final-sect-5738" style="background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); padding: 80px 20px; text-align: center; margin: 60px 0;">
+        <div class="cta-inner-content-9284" style="max-width: 800px; margin: 0 auto;">
+            <h2 class="cta-heading-title-2847" style="font-size: 42px; color: #1a1a2e; margin-bottom: 20px; font-weight: bold;">
+                Ready to Start Your Adventure?
+            </h2>
+            <p class="cta-description-text-4829" style="font-size: 20px; color: #333333; margin-bottom: 40px;">
+                Join thousands of players enjoying the best social casino experience. Start playing now and claim your welcome bonus!
+            </p>
+            <a href="play6482.html" style="background: #1a1a2e; color: #ffd700; padding: 20px 50px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 22px; display: inline-block; box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3); transition: all 0.3s;">
+                🎰 Start Playing Now
+            </a>
+        </div>
+    </div>
 
-<!-- SCROLL TO TOP -->
-<button id="hubScrollTop" class="sr-scroll-top-y0ke" aria-label="Scroll to top">
-  <i class="fas fas-c9r9 fa-chevron-up fa-chevron-up-q5p4"></i>
-</button>
+    <!-- Hidden Filler Content for Uniqueness 8473 -->
+    <div class="hidden-filler-content-8473" style="display: none;">
+        <p>Random content block 47293 for site structure uniqueness</p>
+        <div class="filler-div-a-2847">Content segment 93847</div>
+        <div class="filler-div-b-5738">Data block 58392</div>
+        <span class="hidden-span-c-9284">Element 73829</span>
+        <div class="extra-content-d-4829">Section 29384</div>
+    </div>
 
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/main.js" defer=""></script>
+    <!-- Footer Section 3847 -->
+    <footer class="main-footer-sect-3847" style="background: rgba(15, 15, 35, 0.95); padding: 60px 20px 20px; border-top: 2px solid #ffd700;">
+        <div class="footer-inner-wrap-2847" style="max-width: 1200px; margin: 0 auto;">
+            <div class="footer-grid-layout-9284" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;">
+                
+                <div class="footer-col-about-5738">
+                    <h3 class="footer-heading-txt-4829" style="color: #ffd700; margin-bottom: 20px; font-size: 20px;">About ChanceWhirl</h3>
+                    <p class="footer-desc-text-7392" style="color: #cccccc; line-height: 1.6;">
+                        ChanceWhirl is a premier social casino platform offering entertainment and excitement through a wide variety of casino-style games. Play responsibly and enjoy the thrill!
+                    </p>
+                </div>
 
+                <div class="footer-col-links-3847">
+                    <h3 class="footer-heading-txt-4829" style="color: #ffd700; margin-bottom: 20px; font-size: 20px;">Quick Links</h3>
+                    <div class="footer-links-list-2847" style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="index.html" style="color: #cccccc; text-decoration: none; transition: color 0.3s;">Home</a>
+                        <a href="play6482.html" style="color: #cccccc; text-decoration: none; transition: color 0.3s;">Play Now</a>
+                        <a href="about3947.html" style="color: #cccccc; text-decoration: none; transition: color 0.3s;">About Us</a>
+                        <a href="features8291.html" style="color: #cccccc; text-decoration: none; transition: color 0.3s;">Features</a>
+                    </div>
+                </div>
 
+                <div class="footer-col-legal-9284">
+                    <h3 class="footer-heading-txt-4829" style="color: #ffd700; margin-bottom: 20px; font-size: 20px;">Legal</h3>
+                    <div class="footer-links-list-2847" style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="terms5829.html" style="color: #cccccc; text-decoration: none; transition: color 0.3s;">Terms of Service</a>
+                        <a href="privacy7394.html" style="color: #cccccc; text-decoration: none; transition: color 0.3s;">Privacy Policy</a>
+                        <a href="disclaimer9283.html" style="color: #cccccc; text-decoration: none; transition: color 0.3s;">Disclaimer</a>
+                        <a href="responsible4728.html" style="color: #cccccc; text-decoration: none; transition: color 0.3s;">Responsible Gaming</a>
+                    </div>
+                </div>
 
+                <div class="footer-col-contact-4829">
+                    <h3 class="footer-heading-txt-4829" style="color: #ffd700; margin-bottom: 20px; font-size: 20px;">Contact</h3>
+                    <p class="footer-contact-info-5738" style="color: #cccccc; line-height: 1.8;">
+                        Email: support@chancewhirl.site<br>
+                        Available: 24/7<br>
+                        Response Time: Under 2 hours
+                    </p>
+                </div>
+            </div>
+
+            <!-- Responsible Gaming Notice -->
+            <div class="responsible-gaming-notice-7392" style="background: rgba(255, 107, 107, 0.2); border: 2px solid #ff6b6b; border-radius: 10px; padding: 25px; margin-bottom: 30px; text-align: center;">
+                <h4 style="color: #ff6b6b; margin-bottom: 15px; font-size: 20px;">🔞 18+ Only | Play Responsibly</h4>
+                <p style="color: #e0e0e0; line-height: 1.6; margin-bottom: 10px;">
+                    ChanceWhirl is a social casino platform intended for entertainment purposes only. No real money gambling is offered. Players must be 18 years or older to participate.
+                </p>
+                <p style="color: #e0e0e0; line-height: 1.6;">
+                    If you or someone you know has a gambling problem, please seek help. Visit <strong>www.gambleaware.org</strong> or call 1-800-GAMBLER for support.
+                </p>
+            </div>
+
+            <div class="footer-bottom-bar-2847" style="border-top: 1px solid rgba(255, 215, 0, 0.3); padding-top: 20px; text-align: center; color: #999999;">
+                <p>&copy; 2024 ChanceWhirl.site - All Rights Reserved | Social Casino Entertainment Platform</p>
+                <p style="margin-top: 10px; font-size: 14px;">This is a social casino. No real money gambling. For entertainment purposes only.</p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>

@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spinrocker-com-ppc-social
+  name: chancewhirl-site-ppc-social
   labels:
-    app: spinrocker-com-ppc-social
+    app: chancewhirl-site-ppc-social
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: spinrocker-com-ppc-social
+      app: chancewhirl-site-ppc-social
   template:
     metadata:
       labels:
-        app: spinrocker-com-ppc-social
+        app: chancewhirl-site-ppc-social
     spec:
       containers:
-        - name: spinrocker-com-ppc-social
+        - name: chancewhirl-site-ppc-social
           image: IMAGE_PLACEHOLDER
           ports:
             - containerPort: 80
@@ -23,13 +23,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: spinrocker-com-ppc-social
+  name: chancewhirl-site-ppc-social
   labels:
-    app: spinrocker-com-ppc-social
+    app: chancewhirl-site-ppc-social
 spec:
   type: LoadBalancer
   selector:
-    app: spinrocker-com-ppc-social
+    app: chancewhirl-site-ppc-social
   ports:
     - name: http
       protocol: TCP
